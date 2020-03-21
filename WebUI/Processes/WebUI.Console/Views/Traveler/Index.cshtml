@@ -1,0 +1,75 @@
+﻿@model IList<TraPa.Entities.Public.Interfaces.ITraveler>
+
+@{
+    ViewBag.Title = "Travelers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.AntiForgeryToken()
+<h2>Travelers</h2>
+<p>
+    @Html.ActionLink("New Traveler", "NewTraveler", "Traveler", null, new { @class = "btn btn-primary" })
+</p>
+
+<table id="travelers" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Direction From</th>
+            <th>Directions To</th>
+            <th>Does Pay</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 1; i <= Model.Count(); i++)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => i)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model[i - 1].Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model[i - 1].FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model[i - 1].LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model[i - 1].PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model[i - 1].DirectionFrom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model[i - 1].DirectionTo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model[i - 1].DoesPay)
+                </td>
+                @if (Model[i - 1].DoesPay)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => Model[i - 1].Price)
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Traveler", Model[i - 1], new { @class = "btn btn-primary" })
+                </td>
+                <td>
+                    @Html.ActionLink("Remove", "Remove", "Traveler", Model[i - 1], new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+﻿@model TraPa.Entities.Public.Interfaces.ITravelDate
+@{
+    ViewData["Title"] = "Travel Date";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.ActionLink("Export", "Export", "Travel", null, new { @class = "btn btn-primary" })
+
+@using (Html.BeginForm("Update", "Travel"))
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Update</button>
+    @Html.HiddenFor(x=> x.Id)
+
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+    <div class="form-group">
+        @Html.LabelFor(m => m.TravelName)
+        @Html.TextBoxFor(m => m.TravelName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TravelName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DateOfTravel)
+        @Html.TextBoxFor(m => m.DateOfTravel, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DateOfTravel)
+    </div>
+
+    <table id="travel" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 1; i < Model.TravelerTravelDateReferences.Count(); i++)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => i)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.TravelerTravelDateReferences[i].Traveler.FirstName + " "
+                    + Model.TravelerTravelDateReferences[i].Traveler.LastName)
+                </td>>
+                <td>
+                    @Html.ActionLink("Remove", "Remove", "Travel", Model.TravelerTravelDateReferences[i].Traveler, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
+    <PackageReference Include="coverlet.collector" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Entities\Impl\TraPa.Entities.Impl.csproj" />
+    <ProjectReference Include="..\..\Entities\Impl\TraPa.DataAccess.EFCore.Impl.csproj" />
+    <ProjectReference Include="..\..\Entities\Public\TraPa.DataAccess.EFCore.Public.csproj" />
+    <ProjectReference Include="..\Impl\TraPa.DataAccess.Repositories.Impl.csproj" />
+    <ProjectReference Include="..\Public\TraPa.DataAccess.Repositories.Public.csproj" />
+  </ItemGroup>
+
+</Project>

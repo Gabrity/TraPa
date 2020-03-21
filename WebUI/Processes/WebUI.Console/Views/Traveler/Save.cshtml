@@ -1,0 +1,49 @@
+﻿@model TraPa.Entities.Public.Interfaces.ITraveler
+@{
+    ViewData["Title"] = "Traveler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Save", "Traveler"))
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+    @Html.HiddenFor(x => x.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LastName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber)
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PhoneNumber)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DirectionFrom)
+        @Html.TextBoxFor(m => m.DirectionFrom, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DirectionFrom)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DirectionTo)
+        @Html.TextBoxFor(m => m.DirectionTo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DirectionTo)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DoesPay)
+        @Html.DropDownListFor(m => m.DoesPay, new List<SelectListItem>() { new SelectListItem("True", "true"), new SelectListItem("False", "false") })
+        @Html.ValidationMessageFor(m => m.DoesPay)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Price)
+        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Price)
+    </div>
+
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}

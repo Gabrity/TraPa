@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Entities\Public\TraPa.DataAccess.EFCore.Public.csproj" />
+    <ProjectReference Include="..\Public\TraPa.DataAccess.Repositories.Public.csproj" />
+  </ItemGroup>
+
+</Project>

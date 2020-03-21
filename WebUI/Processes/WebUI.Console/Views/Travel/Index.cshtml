@@ -1,0 +1,48 @@
+﻿@model IList<TraPa.Entities.Public.Interfaces.ITravelDate>
+
+@{
+    ViewBag.Title = "Travel Dates";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.AntiForgeryToken()
+<h2>Travel Dates</h2>
+<p>
+    @Html.ActionLink("New Travel", "NewTravel", "Travel", null, new { @class = "btn btn-primary" })
+</p>
+
+<table id="travel" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Id</th>
+            <th>Travel Name</th>
+            <th>Date of Travel</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 1; i <= Model.Count(); i++)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => i)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model[i - 1].Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model[i - 1].TravelName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model[i - 1].DateOfTravel)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Travel", Model[i - 1], new {@class = "btn btn-primary"})
+                </td>
+                <td>
+                    @Html.ActionLink("Remove", "Remove", "Travel", Model[i - 1], new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,24 @@
+﻿@model TraPa.Entities.Public.Interfaces.ITravelDate
+@{
+    ViewData["Title"] = "Travel Date";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Save", "Travel"))
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+    @Html.HiddenFor(x=> x.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.TravelName)
+        @Html.TextBoxFor(m => m.TravelName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TravelName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DateOfTravel)
+        @Html.TextBoxFor(m => m.DateOfTravel, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DateOfTravel)
+    </div>
+
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}

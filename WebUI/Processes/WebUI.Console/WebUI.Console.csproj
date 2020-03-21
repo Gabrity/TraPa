@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DataAccess\Entities\Impl\TraPa.DataAccess.EFCore.Impl.csproj" />
+    <ProjectReference Include="..\..\..\DataAccess\Repositories\Impl\TraPa.DataAccess.Repositories.Impl.csproj" />
+    <ProjectReference Include="..\..\..\DataAccess\Repositories\Public\TraPa.DataAccess.Repositories.Public.csproj" />
+    <ProjectReference Include="..\..\..\Models\Impl\TraPa.Models.Impl.csproj" />
+  </ItemGroup>
+</Project>
